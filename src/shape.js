@@ -3,6 +3,17 @@ function Shape(sides, color) {
   this.color = color;
 }
 
+var colors = {
+    red: "rgb(255,0,0)",
+    blue: "rgb(0,0,255)",
+    green: "rgb(0,205,0)",
+    brown: "rgb(165,42,42)",
+    yellow: "rgb(255,255,0)",
+    orange: "rgb(255,165,0)",
+    purple: "rgb(128,0,128)",
+  };
+
+
 Shape.prototype.area = function() {
   return 0;
 };
@@ -18,13 +29,15 @@ Shape.prototype.draw = function() {
 };
 
 Shape.prototype.toString = function() {
-  return "[Shape sides:" + this.sides + ", color:" + this.color +" ]"
+  return "[Shape sides: " + this.sides + ", color:" + this.color +" ]";
 };
 
 Shape.prototype.getRGB = function() {
-  // Return the rgb value (as a string) for the color you've selected.
-  // You can have a preset list of colors that you switch on.
-  return "rgb(0,0,0)";
-}
+  for (var key in colors) {
+    if (key === this.color) {
+      return colors[key];
+    }
+  }
+};
 
 module.exports = Shape;
